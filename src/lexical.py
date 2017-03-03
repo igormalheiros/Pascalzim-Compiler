@@ -168,6 +168,6 @@ class Lexical:
 			print("ERRO! COMENTARIO NAO FINALIZADO")
 			sys.exit(1)
 
-lex = Lexical("entrada.txt")
+lex = Lexical("../entrada.txt")
 lex.buildLexical()
 print(lex)
