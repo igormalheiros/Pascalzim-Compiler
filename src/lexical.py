@@ -18,7 +18,7 @@ class Lexical:
 		self.comment = False
 		self.reserved  = ['program', 'var', 'integer', 'real', 'boolean', 'procedure', 'begin', 'end', 'if', 'then', 'else', 'while', 'not', 'do']
 		self.delimiters = [',', '.',';', ':', ':=', ')', '(' ]
-		self.operators = ['+', '-', '*', '/', '=', '<', '>', '>=', '<=', 'and', 'or']
+		self.operators = ['+', '-', '*', '/', '=', '<', '>', '>=', '<=', 'and', 'or', '<>']
 
 	def __str__(self):
 		r = "Token\t\t\tClassification\t\t\tLine\n\n"
@@ -94,7 +94,8 @@ class Lexical:
 	def recognizeOthers(self, line, i, l):
 
 		#checa os operadores e delimitadores com mais de um caractere
-		if( ( (line[i] == ':') or (line[i] == '>') or (line[i] == '<') ) and (line[i+1] == '=') ) :
+		if ( ( (line[i] == ':') or (line[i] == '>') or (line[i] == '<') ) 
+		and( ( ( (line[i]+line[i+1]) == '<>' ) or ( (line[i+1]) == '=' )) ) ):
 			s = line[i] + line[i+1]
 			i += 1
 			if( s in self.delimiters):
